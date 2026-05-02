@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Election Sahayak — AI civic assistant for Indian elections.">
+  <title>Election Sahayak — AI Civic Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--saffron" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--green" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="header__brand">
+      <div class="header__icon">🗳️</div>
+      <div>
+        <h1 class="header__title" data-i18n="app.title">Election Sahayak</h1>
+        <p class="header__subtitle" data-i18n="app.subtitle">Your AI Civic Assistant</p>
+      </div>
+    </div>
+    <div class="header__actions">
+      <select id="lang-select" class="select--pill" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__inner">
+        <div class="input-group">
+          <label for="age-input" class="input-label" data-i18n="sidebar.ageLabel">Your Age</label>
+          <input type="number" id="age-input" class="input" min="1" max="120" placeholder="Enter your age">
+        </div>
+        <div class="input-group">
+          <label for="status-select" class="input-label" data-i18n="sidebar.statusLabel">Registration Status</label>
+          <select id="status-select" class="select">
+            <option value="unknown" data-i18n="sidebar.statusUnknown">Select your status</option>
+            <option value="unregistered" data-i18n="sidebar.statusUnregistered">Not Registered</option>
+            <option value="registered" data-i18n="sidebar.statusRegistered">Registered Voter</option>
+          </select>
+        </div>
+        <button id="update-btn" class="btn btn--primary" data-i18n="sidebar.updateBtn">Update Dashboard</button>
+      </div>
+      <div class="sidebar__badges">
+        <div class="badge" id="badge-gemini"><span class="badge__dot"></span> Gemini</div>
+        <div class="badge" id="badge-maps"><span class="badge__dot"></span> Maps</div>
+        <div class="badge" id="badge-translate"><span class="badge__dot"></span> Translate</div>
+      </div>
+    </aside>
+
+    <main class="dashboard" id="dashboard"></main>
+  </div>
+
+  <button class="chat-fab" id="chat-fab" aria-label="Open AI chat">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+
+  <div class="chat-overlay" id="chat-overlay"></div>
+  <div class="chat-drawer" id="chat-drawer">
+    <div class="chat-drawer__header">
+      <div>
+        <h2 class="chat-drawer__title" data-i18n="chat.title">AI Election Helpdesk</h2>
+        <p class="chat-drawer__subtitle" data-i18n="chat.subtitle">Powered by Google Gemini</p>
+      </div>
+      <button class="chat-drawer__close" id="chat-close" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chat-drawer__messages" id="chat-messages"></div>
+    <div class="chat-drawer__input">
+      <input type="text" id="chat-input" class="input" placeholder="Ask about elections..." autocomplete="off">
+      <button id="chat-send" class="btn btn--send" aria-label="Send message">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p data-i18n="common.poweredBy">Powered by Google Services</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
