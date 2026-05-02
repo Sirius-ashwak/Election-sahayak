@@ -219,9 +219,13 @@ app.get('*', (req, res) => {
 });
 
 // --- Start server ---
-app.listen(PORT, () => {
-  console.log(`🗳️  Election Sahayak running on port ${PORT}`);
-  console.log(`   Gemini: ${geminiModel ? '✅ Connected' : '❌ No API key'}`);
-  console.log(`   Maps: ${process.env.GOOGLE_MAPS_API_KEY ? '✅ Configured' : '❌ No API key'}`);
-  console.log(`   Translate: ${process.env.GOOGLE_TRANSLATE_API_KEY ? '✅ Configured' : '❌ No API key'}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🗳️  Election Sahayak running on port ${PORT}`);
+    console.log(`   Gemini: ${geminiModel ? '✅ Connected' : '❌ No API key'}`);
+    console.log(`   Maps: ${process.env.GOOGLE_MAPS_API_KEY ? '✅ Configured' : '❌ No API key'}`);
+    console.log(`   Translate: ${process.env.GOOGLE_TRANSLATE_API_KEY ? '✅ Configured' : '❌ No API key'}`);
+  });
+}
+
+module.exports = app;
